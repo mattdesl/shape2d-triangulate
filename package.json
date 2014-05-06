@@ -1,6 +1,6 @@
 {
   "name": "shape2d-triangulate",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "triangulates a fontpath using poly2tri",
   "main": "index.js",
   "scripts": {
