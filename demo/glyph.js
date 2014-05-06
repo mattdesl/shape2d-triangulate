@@ -40,7 +40,7 @@ function addRandomSteinerPoints(N) {
 	for (var count=0; count<N; count++) {
 		var dat = { 
 			x: Math.round(Math.random()*(glyph.width+glyph.hbx)), 
-			y: Math.round(Math.random()*glyph.height) 
+			y: -glyph.hby + Math.round(Math.random()*(glyph.height+glyph.hby)) 
 		};
 		steinerPoints.push(dat);
 	}
