@@ -1,5 +1,5 @@
 {
-  "name": "fontpath-poly2tri",
+  "name": "shape2d-triangulate",
   "version": "0.0.0",
   "description": "triangulates a fontpath using poly2tri",
   "main": "index.js",
@@ -19,5 +19,28 @@
   "dependencies": {
     "poly2tri": "^1.3.5",
     "point-util": "0.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mattdesl/shape2d-triangulate.git"
+  },
+  "keywords": [
+    "shape2d",
+    "shape",
+    "polygon",
+    "contour",
+    "poly2tri",
+    "triangulate",
+    "triangulation",
+    "tesselate",
+    "tesselation",
+    "fontpath",
+    "outline",
+    "triangles",
+    "tris"
+  ],
+  "bugs": {
+    "url": "https://github.com/mattdesl/shape2d-triangulate/issues"
+  },
+  "homepage": "https://github.com/mattdesl/shape2d-triangulate"
 }
