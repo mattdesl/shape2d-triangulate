@@ -5,24 +5,29 @@ var test = require('canvas-testbed');
 
 //For best precision, export with the same font 
 //size that we're planning on rendering it at..
-var TestFont = require('fontpath-test-fonts/lib/OpenBaskerville-0.0.53.ttf');
+var TestFont = require('fontpath-test-fonts/lib/OpenBaskerville-0.0.75.ttf');
 
 var toGlyphMatrix3 = require('fontpath-vecmath').toGlyphMatrix3;
 var decompose = require('fontpath-shape2d');
 var triangulate = require('../index');
 
-var glyph = TestFont.glyphs["8"];
+var glyph = TestFont.glyphs["t"];
 var tmpVec = new Vector2();
 var tmpMat = new Matrix3();
 var mouse = new Vector2();
 
-var shapes = decompose(glyph);
+var shapes;
 
-//We can optionally simplify the path like so.
-//Remember, they are in font units (EM)
-for (var i=0; i<shapes.length; i++) {
-	shapes[i].simplify( TestFont.size * 2, shapes[i] );
+function loadShapes() {
+	shapes = decompose(glyph);
+
+	//We can optionally simplify the path like so.
+	//Remember, they are in font units (EM)
+	for (var i=0; i<shapes.length; i++) {
+		shapes[i].simplify( TestFont.size * 2, shapes[i] );
+	}
 }
+
 
 //This is optional, but leads to more inner triangles for boxy letters like 'T'
 //Scatter the EM square with steiner points.
@@ -42,6 +47,8 @@ function addRandomSteinerPoints(N) {
 }
 
 var tris;
+
+loadShapes(glyph);
 retriangulate();
 
 function reset() {
@@ -100,17 +107,26 @@ window.addEventListener('mousedown', function(ev) {
 
 window.addEventListener('keydown', function(ev) {
 	var code = (ev.which||ev.keyCode);
+	var chr = String.fromCharCode(code).toLowerCase();
+
 	if (code === 32)
 		reset();
-	else if (String.fromCharCode(code).toLowerCase() === 'r') {
+	else if (chr === 'r') {
 		addRandomSteinerPoints();
 		retriangulate();
+	} else if (chr && chr in TestFont.glyphs) {
+		if (ev.shiftKey)
+			chr = chr.toUpperCase();
+		glyph = TestFont.glyphs[chr];
+		loadShapes();
+		reset();
 	}
 });
 
 function start() { //domready
 	var div = document.createElement("div");
-	div.innerHTML = "<div>click to add steiner points</div><div>R to add random points</div><div>SPACE to reset</div>";
+	div.innerHTML = "<div>click to add steiner points</div><div>R to add random points</div><div>SPACE to reset</div>"
+			+ "<div>press any other key to see it</div>";
 	div.style.position = "absolute";
 	div.style.top = "20px";
 	div.style.margin = "0";

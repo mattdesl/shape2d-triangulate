@@ -69,6 +69,9 @@ module.exports = function (shapes, steinerPoints) {
         
         var set = asPointSet(points);
 
+        if (set.length < 3)
+            continue;
+
         //check the winding order
         if (j==0) {
             windingClockwise = util.isClockwise(set);
