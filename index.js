@@ -69,6 +69,10 @@ module.exports = function (shapes, steinerPoints) {
         
         var set = asPointSet(points);
 
+        //OpenBaskerville-0.0.75 does some strange things
+        //with the moveTo command, causing the decomposition
+        //to give us an extra shape with only 1 point. This
+        //simply skips a path if it can't make up a triangle..
         if (set.length < 3)
             continue;
 
