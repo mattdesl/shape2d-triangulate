@@ -1,0 +1,23 @@
+{
+  "name": "fontpath-poly2tri",
+  "version": "0.0.0",
+  "description": "triangulates a fontpath using poly2tri",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "mkdir -p demo/bundle && browserify demo/glyph.js -o demo/bundle/glyph.js"
+  },
+  "author": "Matt DesLauriers",
+  "license": "MIT",
+  "devDependencies": {
+    "vecmath": "^0.1.1",
+    "fontpath-test-fonts": "0.0.1",
+    "canvas-testbed": "0.0.2",
+    "fontpath-vecmath": "0.0.1",
+    "fontpath-shape2d": "0.0.1"
+  },
+  "dependencies": {
+    "poly2tri": "^1.3.5",
+    "point-util": "0.0.0"
+  }
+}
