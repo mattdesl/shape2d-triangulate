@@ -12,7 +12,7 @@ var toGlyphMatrix3 = require('fontpath-vecmath').toGlyphMatrix3;
 var decompose = require('fontpath-shape2d');
 var triangulate = require('../index');
 
-var glyph = TestFont.glyphs["t"];
+var glyph = TestFont.glyphs["8"];
 var tmpVec = new Vector2();
 var tmpMat = new Matrix3();
 var mouse = new Vector2();
