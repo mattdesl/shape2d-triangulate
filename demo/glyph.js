@@ -12,7 +12,6 @@ var decompose = require('fontpath-shape2d');
 var triangulate = require('../index');
 
 var glyph = TestFont.glyphs["8"];
-var tmpVec = new Vector2();
 var tmpMat = new Matrix3();
 var mouse = new Vector2();
 
@@ -123,7 +122,7 @@ window.addEventListener('keydown', function(ev) {
 	}
 });
 
-function start() { //domready
+function start() { //called on domready
 	var div = document.createElement("div");
 	div.innerHTML = "<div>click to add steiner points</div><div>R to add random points</div><div>SPACE to reset</div>"
 			+ "<div>press any other key to see it</div>";
